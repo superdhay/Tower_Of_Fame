@@ -8,7 +8,17 @@ public class Tower_Of_Fame : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { 
+			"Core",
+			"CoreUObject",
+			"AIModule",
+            "Niagara",
+            "GameplayTasks",
+            "NavigationSystem",
+            "UMG",
+			"Engine",
+			"InputCore" 
+		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
