@@ -8,6 +8,10 @@
 
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 
+#include "PlayerSpringArmComponent.h"
+
+#include "../../Systems/LogicNodes/Gate.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
 
 #include "GameFramework/Character.h"
@@ -17,6 +21,14 @@ UCLASS()
 class TOWER_OF_FAME_API APlayerCharacter : public ACharacter
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY(VisibleAnywhere)
+		FGate Gate = FGate(false);
+
+	UPROPERTY(VisibleAnywhere)
+		UPlayerSpringArmComponent* SpringArmComponent;
+
 
 public:
 	// Sets default values for this character's properties
@@ -35,4 +47,11 @@ public:
 
 	FVector GetDirectionToMove();
 	void MoveToDirection();
+
+	void LeftClickPressed();
+	void LeftClickReleased();
+	void ZoomIn();
+	void ZoomOut();
+
+	void SetUpSpringArm();
 };
