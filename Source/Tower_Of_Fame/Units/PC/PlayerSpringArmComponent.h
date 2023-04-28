@@ -17,6 +17,10 @@ class TOWER_OF_FAME_API UPlayerSpringArmComponent : public USpringArmComponent
 {
 	GENERATED_BODY()
 
+private:
+	int MinArmLength = 200;
+	int MaxArmLength = 800;
+
 public:
 	UPlayerSpringArmComponent();
 

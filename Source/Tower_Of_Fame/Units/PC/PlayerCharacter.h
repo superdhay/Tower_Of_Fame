@@ -8,9 +8,11 @@
 
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 
+#include "../../Systems/LogicNodes/Gate.h"
+
 #include "PlayerSpringArmComponent.h"
 
-#include "../../Systems/LogicNodes/Gate.h"
+#include "Controllers/SPlayerController.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
 

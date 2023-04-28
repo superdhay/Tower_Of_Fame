@@ -8,7 +8,6 @@ APlayerCharacter::APlayerCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 	
 	SetUpSpringArm();
 }
@@ -25,10 +24,6 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	if (Gate.IsOpen()) {
-		MoveToDirection();
-	}
 }
 
 // Called to bind functionality to input
@@ -51,6 +46,7 @@ FVector APlayerCharacter::GetDirectionToMove() {
 }
 
 void APlayerCharacter::MoveToDirection() {
+
 	auto cont = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
 	FVector moveDirection = GetDirectionToMove();
@@ -68,12 +64,14 @@ void APlayerCharacter::MoveToDirection() {
 }
 
 void APlayerCharacter::LeftClickPressed() {
+	Cast<ASPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->LeftClickPressed();
 	Gate.Open();
 }
 
 void APlayerCharacter::LeftClickReleased() {
-	Gate.Close();
-	GetCharacterMovement()->MaxWalkSpeed = 0;
+	Cast<ASPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->LeftClickReleased();
+	//Gate.Close();
+	//GetCharacterMovement()->MaxWalkSpeed = 0;
 }
 
 void APlayerCharacter::ZoomIn() {
