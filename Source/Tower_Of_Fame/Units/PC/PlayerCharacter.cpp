@@ -9,7 +9,12 @@ APlayerCharacter::APlayerCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	SetUpSpringArm();
+	//SetUpSpringArm();
+	
+	SpringArmComponent = CreateDefaultSubobject<UPlayerSpringArmComponent>(TEXT("SpringArm"));
+	SpringArmComponent->SetupAttachment(RootComponent);
+	SpringArmComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	
 }
 
 // Called when the game starts or when spawned
@@ -70,8 +75,6 @@ void APlayerCharacter::LeftClickPressed() {
 
 void APlayerCharacter::LeftClickReleased() {
 	Cast<ASPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->LeftClickReleased();
-	//Gate.Close();
-	//GetCharacterMovement()->MaxWalkSpeed = 0;
 }
 
 void APlayerCharacter::ZoomIn() {
@@ -84,9 +87,5 @@ void APlayerCharacter::ZoomOut() {
 
 void APlayerCharacter::SetUpSpringArm()
 {
-	SpringArmComponent = CreateDefaultSubobject<UPlayerSpringArmComponent>(TEXT("SpringArm"));
-
-	check(SpringArmComponent != nullptr);
-	SpringArmComponent->SetupAttachment(RootComponent);
-	SpringArmComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	
 }
