@@ -28,7 +28,8 @@ private:
 	UPROPERTY(VisibleAnywhere)
 		FGate Gate = FGate(false);
 
-	UPROPERTY(VisibleAnywhere)
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UPlayerSpringArmComponent* SpringArmComponent;
 
 

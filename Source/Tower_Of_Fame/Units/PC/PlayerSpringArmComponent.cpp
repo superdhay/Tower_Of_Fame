@@ -12,6 +12,10 @@ void UPlayerSpringArmComponent::SetUpSpringArm()
 {
 	this->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.f));
 	this->TargetArmLength = 800.0f;
+	this->bInheritPitch = false;
+	this->bInheritRoll = false;
+	this->bInheritYaw = false;
+	this->bDoCollisionTest = false;
 }
 
 void UPlayerSpringArmComponent::ZoomIn()
